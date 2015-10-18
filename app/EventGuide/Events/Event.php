@@ -1,19 +1,19 @@
 <?php
-namespace EventGuide\Places;
+namespace EventGuide\Events;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Place
- * @package EventGuide\Places
+ * Class Event
+ * @package EventGuide\Events
  */
-class Place extends Model
+class Event extends Model
 {
-    /**
+    /*
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
+
     public function events()
     {
         return $this->hasMany('EventGuide\Events\Event');
-    }
+    } */
 }

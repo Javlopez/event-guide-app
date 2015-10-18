@@ -21,8 +21,6 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="{{ asset('/js/vendor.js') }}"></script>
-    <!--
     <script src="https://maps.googleapis.com/maps/api/js"></script>
-    -->
     <style> #map {  width: 700px;  height: 500px; }</style>
 </head>

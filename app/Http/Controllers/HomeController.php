@@ -30,8 +30,11 @@ class HomeController extends Controller
     public function index()
     {
 
-        dd($this->place->getPlaces());
-        $places = array(
+        $places = json_encode($this->place->getPlaces());
+
+        //[{"id":1,"name":"Stanford Stadium","latitude":"37.43457","longitude":"-122.16119",
+        //"events":[{"id":1,"place_id":1,"name":"Sport Forum","description":"The forum","date":"2015-11-11","stands":14},{"id":2,"place_id":1,"name":"The legends","description":"Expo with legends","date":"2015-12-11","stands":14}]},{"id":2,"name":"Stanford Memorial Auditorium","latitude":"37.42887","longitude":"-122.16652","events":[{"id":3,"place_id":2,"name":"Expo html5","description":"companies and experts in HTML5","date":"2015-11-01","stands":14},{"id":4,"place_id":2,"name":"Expo Ruby5","description":"Jetbrains, Amazon, Rackspace, among others","date":"2015-11-10","stands":14},{"id":5,"place_id":2,"name":"Expo JEE","description":"Java in the industry","date":"2015-11-14","stands":14}]},{"id":3,"name":"Lucile Packard Children's Hospital Stanford","latitude":"37.43587","longitude":"-122.17488","events":[{"id":6,"place_id":3,"name":"The IT  in the Health","description":"Several companies presenting their products of health","date":"2015-11-20","stands":14}]}]<!DOCTYPE html>
+        /*$places = array(
             [
                 'name' => 'Las vegas',
                 'id' => 1,
@@ -53,7 +56,7 @@ class HomeController extends Controller
                     ['event' => 'C++ conference', 'date' => '1/1/2016','id' => 4]
                 ),
             ],
-        );
+        );*/
         return view('home.index', compact('places'));
     }
 

@@ -1,29 +1,30 @@
 <?php
-namespace EventGuide\Places\Repositories;
+namespace EventGuide\Events\Repositories;
 
+use App\Events\Event;
 use EventGuide\AbstractRepository;
-use EventGuide\Places\Place;
 
 /**
  * Class PlaceEloquent
  * @package EventGuide\Places\Repositories
  */
-class PlaceEloquent extends AbstractRepository implements PlaceInterface
+class EventEloquent extends AbstractRepository implements EventInterface
 {
 
     /**
-     * @param Place $model
+     * @param Event $model
      */
     public function __construct(
-        Place $model
+        Event $model
     ){
         $this->model = $model;
     }
+
     /**
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getPlaces()
+    public function getEvents()
     {
-        return $this->model->with('events')->get();
+        return $this->getModel()->all();
     }
 }

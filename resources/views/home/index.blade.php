@@ -25,7 +25,7 @@
             <div class="col-lg-8 col-lg-offset-2">
                     <div id="map">
                     </div>
-                {!!  Form::hidden('eventsList', json_encode($places), ['id' => 'eventsList']) !!}
+                {!!  Form::hidden('eventsList', $places, ['id' => 'eventsList']) !!}
             </div>
         </div>
     </div>
@@ -33,10 +33,10 @@
         var itemsEvents = jQuery.parseJSON(  $('#eventsList').val() );
         var eventsLists = "";
 
-        var andalucia = new google.maps.LatLng(37.653383, -5.405518);
+        var center = new google.maps.LatLng(37.43457,-122.16119);
         var options = {
-            zoom: 9,
-            center: andalucia,
+            zoom: 13,
+            center: center,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var div = document.getElementById('map');
@@ -49,10 +49,11 @@
         var markers = [];
         for (var i = 0, j = itemsEvents.length; i < j; i++) {
             var place = itemsEvents[i];
+            eventsLists = "";
 
             jQuery.each(place.events, function(key,value) {
                 eventsLists = eventsLists+
-                        '<li class="list-group-item">' + value.event + ', date: ' + value.date +
+                        '<li class="list-group-item">' + value.name + ', date: ' + value.date +
                         '<a href="/events/' +  value.id + '" style="font-weight:900;"> book a place <i class="fa fa-angle-double-right"></i></a></li>';
 
             });
