@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use EventGuide\Places\Repositories\PlaceInterface;
 
 /**
  * Class HomeController
@@ -13,6 +14,14 @@ use App\Http\Controllers\Controller;
  */
 class HomeController extends Controller
 {
+
+    protected $place;
+
+    public function __construct(PlaceInterface $place)
+    {
+        $this->place = $place;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,6 +30,7 @@ class HomeController extends Controller
     public function index()
     {
 
+        dd($this->place->getPlaces());
         $places = array(
             [
                 'name' => 'Las vegas',
