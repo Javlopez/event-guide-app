@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableEvents extends Migration
+class CreateTableReservations extends Migration
 {
     /**
      * Run the migrations.
@@ -12,19 +12,20 @@ class CreateTableEvents extends Migration
      */
     public function up()
     {
-        Schema::create('events', function(Blueprint $table){
+        Schema::create('reservations', function(Blueprint $table){
             $table->increments('id');
-            $table->integer('place_id')->unsigned();
+            $table->integer('stand_id')->unsigned();
             $table->string('name');
-            $table->string('description');
-            $table->date('date');
-            $table->integer('stands');
-            $table->string('contact');
+            $table->string('email');
+            $table->string('address');
+            $table->string('documents');
+            $table->string('header_image');
+            $table->timestamps();
 
             $table
-                ->foreign('place_id')
+                ->foreign('stand_id')
                 ->references('id')
-                ->on('places')
+                ->on('stands')
                 ->onDelete('cascade');
         });
     }
@@ -36,6 +37,6 @@ class CreateTableEvents extends Migration
      */
     public function down()
     {
-        Schema::drop('events');
+        Schema::drop('reservations');
     }
 }

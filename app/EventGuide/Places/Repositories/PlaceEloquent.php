@@ -14,10 +14,9 @@ class PlaceEloquent extends AbstractRepository implements PlaceInterface
     /**
      * @param Place $model
      */
-    public function __construct(
-        Place $model
-    ){
-        $this->model = $model;
+    public function __construct(Place $model)
+    {
+        parent::__construct($model);
     }
     /**
      * @return \Illuminate\Database\Eloquent\Collection|static[]

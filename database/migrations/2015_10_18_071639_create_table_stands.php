@@ -17,6 +17,7 @@ class CreateTableStands extends Migration
             $table->string('name');
             $table->integer('event_id')->unsigned();
             $table->integer('status')->unsigned();
+            $table->decimal('price');
             $table->timestamps();
 
             $table

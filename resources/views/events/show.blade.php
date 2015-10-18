@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <br>
-                    <h2 class="section-heading">Select your </h2>
+                    <h2 class="section-heading">{{$event->name}} </h2>
                     <hr class="primary">
                 </div>
             </div>
@@ -45,67 +45,85 @@
             .br-t{border-top:1px solid #ccc;}
             .br-b{border-bottom:1px solid #ccc;}
             .showroom > div,.showroom > div > div { height:130px;}
-            .showroom > div.col-md-2:hover, .showroom > div > div.col-md-2:hover { background:#ddd;}
+            .showroom > div.col-md-2:hover, .showroom > div > div.col-md-2:hover { background:#eee;}
             .no-br { border:none !important;}
             .btn{  font-size: 12px;}
             .booked {
-                background: url("http://localhost:8000/img/header.jpg") 1px 2px no-repeat;
+                /* background: url("http://localhost:8000/img/header.jpg") 1px 2px no-repeat; */
             }
+            .booked:hover { background:#fff !important; }
+            *{font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;}
             address.information {
                 font-size: 12px;
                 font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
                 padding: 0;
             }
+            ul.options .list-group-item  {
+                padding: 10px 8px !important;
+            }
         </style>
 
 
 
-        <div class="container showroom">
+        <div class="container">
 
-            <h4 class="section-heading">Please Book your place</h4>
-            <div>
-                name, location, event dates
+            <h4 class="section-heading" style="padding-left:31px">Please Book your place</h4>
+            <div class="row">
+                <ul class="list-group col-md-4" style="padding-left:31px">
+                    <li class="list-group-item"><strong>{{$event->name}}</strong></li>
+                    <li class="list-group-item">Information: {{$event->description}}</li>
+                    <li class="list-group-item">Date: {{$event->date}}</li>
+                </ul>
+                <div class="row col-md-12 text-center br-b">
+                    <p style="color:#f05f40;font-weight:900;">
+                        <span class="caret"></span> Please Book your place <span class="caret"></span>
+                    </p>
+                </div>
             </div>
-            <div class="row br">
-                <div class="col-md-2 br-r text-center">
-                    <div>
-                        Stand 1 is available
-                        <a href="/events/new/1" class="btn btn-default btn-primary">Reserve</a>
+            <div class="container showroom">
+            @foreach($event->stands()->get() as $index => $stand)
+                @if(($index%5)==0 AND $index!=0)
+                    <div class="row no-br">
+                        <div class="col-md-10"></div>
                     </div>
-                </div>
-                <div class="col-md-2 br-r btn-warning booked">
-                        <h5>Twitter .Inc</h5>
-                        <h6>Company od tiwtter</h6>
-                        <button type="button" class="btn btn-default btn-primary" style="font-size:11px">Download documents</button>
-                </div>
-                <div class="col-md-2 br-r">.col-md-1</div>
-                <div class="col-md-2 br-r">.col-md-1</div>
-                <div class="col-md-2 br-r">.col-md-1</div>
-                <div class="col-md-2">.col-md-1</div>
-            </div>
-            <div class="row no-br">
-                <div class="col-md-2 br-l br-r">.col-md-1</div>
-                <div class="col-md-8"></div>
-                <div class="col-md-2 br-l br-r">.col-md-1</div>
-            </div>
-            <div class="row showroom">
-                <div class="col-md-2 br">.col-md-1</div>
-                <div class="col-md-2 no-br"></div>
-                <div class="col-md-2 br">.col-md-1</div>
-                <div class="col-md-2 br-r br-b br-t">.col-md-1</div>
-                <div class="col-md-2 no-br"></div>
-                <div class="col-md-2 br">.col-md-1</div>
-            </div>
-            <div class="row showroom">
-                <div class="col-md-2 br-r br-l">.col-md-1</div>
-                <div class="col-md-8"></div>
-                <div class="col-md-2 br-r br-l">.col-md-1</div>
-            </div>
-            <div class="row showroom">
-                <div class="col-md-6 br">.col-md-6</div>
-                <div class="col-md-6 br">.col-md-6</div>
-            </div>
+                @endif
 
+                 @if($stand->reservation)
+                        <div class="col-md-2 br text-center booked">
+                            <br>
+                            <ul class="list-group col-md-12 options">
+                                <li class="list-group-item">Twitter .Inc</li>
+                                <li class="list-group-item">
+                                    <button type="button" class="btn btn-success" style="font-size:11px">documents</button>
+                                </li>
+                            </ul>
+                        </div>
+                    @else
+                        <div class="col-md-2 br text-center">
+                            <br>
+                            <ul class="list-group col-md-12 options">
+                                <li class="list-group-item"> Stand {{$stand->id}}: available</li>
+                                <li class="list-group-item">
+                                    <a href="{{ route('stands.show',['id' => $stand->id]) }}" class="btn btn-default btn-primary" data-toggle="modal" data-target="#stand-details">Reserve</a>
+                                </li>
+                            </ul>
+                        </div>
+                    @endif
+            @endforeach
+            </div>
         </div>
     </section>
+
+<div class="modal" id="stand-details" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!-- Modal -->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+<script>
+    $('body').on('hidden.bs.modal', '.modal', function () {
+        $(this).removeData('bs.modal');
+    });
+</script>
 @endsection

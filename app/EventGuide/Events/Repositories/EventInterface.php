@@ -11,4 +11,6 @@ interface EventInterface
      * @return mixed
      */
     public function getEvents();
+
+    public function getEventById($id);
 }

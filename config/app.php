@@ -147,6 +147,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         'EventGuide\Places\PlaceServiceProvider',
         'EventGuide\Events\EventServiceProvider',
+        'EventGuide\Stands\StandServiceProvider',
 
     ],
 

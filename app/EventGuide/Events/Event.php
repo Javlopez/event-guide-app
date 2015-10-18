@@ -9,11 +9,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Event extends Model
 {
-    /*
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
 
-    public function events()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function stands()
     {
-        return $this->hasMany('EventGuide\Events\Event');
-    } */
+        return $this->hasMany('EventGuide\Stands\Stand');
+    }
 }

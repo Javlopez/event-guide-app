@@ -5,22 +5,23 @@ namespace App\Http\Controllers;
 use EventGuide\Events\Repositories\EventInterface;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use EventGuide\Stands\Repositories\StandInterface;
 
 /**
- * Class HomeController
+ * Class StandsController
  * @package App\Http\Controllers
  * @author Javier Lopez Lopez <sjavierlopez@gmail.com>
  */
-class EventsController extends Controller
+class StandsController extends Controller
 {
     /**
-     * @var EventInterface
+     * @var StandInterface
      */
-    protected $event;
+    protected $stand;
 
-    public function __construct(EventInterface $event)
+    public function __construct(StandInterface $stand)
     {
-        $this->event = $event;
+        $this->stand = $stand;
     }
 
     /**
@@ -30,14 +31,8 @@ class EventsController extends Controller
      */
     public function show($id)
     {
-        $event = $this->event->getEventById($id);
-        return view('events.show',compact('event'));
-    }
-
-
-    public function create($id)
-    {
-        return "new Event stand $id";
+        $stand = $this->stand->getStand($id);
+        return view('stands.show', compact('stand'));
     }
 
 }

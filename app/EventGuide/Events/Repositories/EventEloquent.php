@@ -1,7 +1,7 @@
 <?php
 namespace EventGuide\Events\Repositories;
 
-use App\Events\Event;
+use EventGuide\Events\Event;
 use EventGuide\AbstractRepository;
 
 /**
@@ -14,10 +14,9 @@ class EventEloquent extends AbstractRepository implements EventInterface
     /**
      * @param Event $model
      */
-    public function __construct(
-        Event $model
-    ){
-        $this->model = $model;
+    public function __construct(Event $model)
+    {
+        parent::__construct($model);
     }
 
     /**
@@ -26,5 +25,14 @@ class EventEloquent extends AbstractRepository implements EventInterface
     public function getEvents()
     {
         return $this->getModel()->all();
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
+     */
+    public function getEventById($id)
+    {
+        return $this->getModel()->with('stands','stands.reservation')->find($id);
     }
 }
