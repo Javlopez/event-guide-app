@@ -3,6 +3,10 @@ namespace EventGuide;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class AbstractRepository
+ * @package EventGuide
+ */
 abstract class AbstractRepository
 {
     protected $model;

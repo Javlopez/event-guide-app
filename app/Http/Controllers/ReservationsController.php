@@ -48,7 +48,7 @@ class ReservationsController extends Controller
     public function create($id)
     {
         $stand = $this->stand->getStand($id);
-        if($stand->status == 1) {
+        if ($stand->status == 1) {
             abort(422, 'This stand has been sold');
         }
         return view('reservations.create', compact('stand'));
@@ -98,7 +98,7 @@ class ReservationsController extends Controller
         $document = $request->file('documents');
 
         $this->uploadImage($image, $imageName);
-        $this->uploadDocument($document,$imageName);
+        $this->uploadDocument($document, $imageName);
 
 
         $reservation = $this->reservation->createReservation($request->all());
@@ -115,5 +115,4 @@ class ReservationsController extends Controller
         Session::flash('success', 'You booking was successfully');
         //return redirect()->route('event.show', [$stand->event_id]);
     }
-
 }

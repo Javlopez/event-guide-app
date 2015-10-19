@@ -36,5 +36,4 @@ class HomeController extends Controller
         $places = json_encode($this->place->getPlaces());
         return view('home.index', compact('places'));
     }
-
 }

@@ -34,5 +34,4 @@ class StandsController extends Controller
         $stand = $this->stand->getStand($id);
         return view('stands.show', compact('stand'));
     }
-
 }
