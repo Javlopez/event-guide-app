@@ -16,4 +16,24 @@ class Reservation extends Model
     {
         return $this->belongsTo('EventGuide\Stands\Stand');
     }
+
+    /**
+     * @param $logo
+     * @return $this
+     */
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
+        return $this;
+    }
+
+    /**
+     * @param $documents
+     * @return $this
+     */
+    public function setDocuments($documents)
+    {
+        $this->documents = $documents;
+        return $this;
+    }
 }

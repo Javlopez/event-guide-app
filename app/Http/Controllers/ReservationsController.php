@@ -48,7 +48,7 @@ class ReservationsController extends Controller
     public function create($id)
     {
         $stand = $this->stand->getStand($id);
-        if ($stand->status == 1) {
+        if ($stand->getStatus() == 1) {
             abort(422, 'This stand has been sold');
         }
         return view('reservations.create', compact('stand'));
@@ -59,7 +59,7 @@ class ReservationsController extends Controller
      * @param $nameFile
      * @return string
      */
-    private function getNameImage(Request $request, $nameFile)
+    private function getFileImage(Request $request, $nameFile)
     {
         $name = sha1($request->file($nameFile)->getClientOriginalName(). uniqid());
         return $name . "." .$request->file($nameFile)->getClientOriginalExtension();
@@ -92,8 +92,8 @@ class ReservationsController extends Controller
     public function store(CreateReservationRequest $request)
     {
         $stand = $this->stand->getStand($request->input('stand'));
-        $imageName = $this->getNameImage($request, 'logo');
-        $documentName = $this->getNameImage($request, 'documents');
+        $imageName = $this->getFileImage($request, 'logo');
+        $documentName = $this->getFileImage($request, 'documents');
         $image = $request->file('logo');
         $document = $request->file('documents');
 
@@ -102,9 +102,9 @@ class ReservationsController extends Controller
 
 
         $reservation = $this->reservation->createReservation($request->all());
-        $reservation->logo = $imageName;
-        $reservation->documents = $documentName;
-        $stand->status = 1;
+        $reservation->setLogo($imageName);
+        $reservation->setDocuments($documentName);
+        $stand->setStatus(1);
         $stand->save();
         $reservation
             ->stand()
@@ -113,6 +113,6 @@ class ReservationsController extends Controller
 
 
         Session::flash('success', 'You booking was successfully');
-        //return redirect()->route('event.show', [$stand->event_id]);
+        return redirect()->route('event.show', [$stand->getEventId()]);
     }
 }

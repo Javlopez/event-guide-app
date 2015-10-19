@@ -14,7 +14,6 @@ class HomeTest extends TestCase
      */
     public function testHomePageIsWorking()
     {
-
         $this->visit('/')->see('eventguide');
     }
 }

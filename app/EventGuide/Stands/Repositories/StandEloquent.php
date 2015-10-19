@@ -20,7 +20,7 @@ class StandEloquent extends AbstractRepository implements StandInterface
 
     /**
      * @param $id
-     * @return mixed
+     * @return Stand
      */
     public function getStand($id)
     {

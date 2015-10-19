@@ -25,4 +25,23 @@ class Stand extends Model
     {
         return $this->belongsTo('EventGuide\Events\Event');
     }
+
+    /**
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    public function setStatus($status = 1)
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    public function getEventId()
+    {
+        return $this->event_id;
+    }
 }

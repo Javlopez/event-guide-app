@@ -485,6 +485,27 @@ header .header-content .header-content-inner p {
     color:#000 !important;
     font-weight:600;
 }
+
+.br{border:1px solid #ccc;}
+.br-l{border-left:1px solid #ccc;}
+.br-r{border-right:1px solid #ccc;}
+.br-t{border-top:1px solid #ccc;}
+.br-b{border-bottom:1px solid #ccc;}
+.showroom > div,.showroom > div > div { height:244px;}
+div.available:hover { background:#eee;}
+.no-br { border:none !important;}
+.btn{  font-size: 12px;}
+.booked, .booked:hover {
+    background:#fff url('/img/sold-ribbon.png') no-repeat 130px -10px !important;
+}
+address.information {
+    font-size: 12px;
+    font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
+    padding: 0;
+}
+ul.options .list-group-item  {
+    padding: 10px 8px !important;
+}
 @charset "UTF-8";/*!
 Animate.css - http://daneden.me/animate
 Licensed under the MIT license - http://opensource.org/licenses/MIT

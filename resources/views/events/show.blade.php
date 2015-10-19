@@ -10,7 +10,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
+                <a class="navbar-brand page-scroll" href="/">
                     EventGuide.io
                 </a>
             </div>
@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#services">Choose your event</a>
+                        <a class="page-scroll" href="/">Go back to list of events</a>
                     </li>
                 </ul>
             </div>
@@ -38,30 +38,6 @@
                 </div>
             </div>
         </div>
-        <style>
-            .br{border:1px solid #ccc;}
-            .br-l{border-left:1px solid #ccc;}
-            .br-r{border-right:1px solid #ccc;}
-            .br-t{border-top:1px solid #ccc;}
-            .br-b{border-bottom:1px solid #ccc;}
-            .showroom > div,.showroom > div > div { height:130px;}
-            div.available:hover { background:#eee;}
-            .no-br { border:none !important;}
-            .btn{  font-size: 12px;}
-            .booked, .booked:hover {
-                background:#fff url('/img/sold-ribbon.png') no-repeat 130px -10px !important;
-            }
-            address.information {
-                font-size: 12px;
-                font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
-                padding: 0;
-            }
-            ul.options .list-group-item  {
-                padding: 10px 8px !important;
-            }
-        </style>
-
-
 
         <div class="container">
 
@@ -79,6 +55,10 @@
                 </div>
             </div>
             <div class="container showroom">
+                @if(Session::has('success'))
+                    <br>
+                    <p class="bg-primary br" style="font-size:20px;padding:6px;">{{ Session::get('success') }}</p>
+                @endif
             @foreach($event->stands()->get() as $index => $stand)
                 @if(($index%5)==0 AND $index!=0)
                     <div class="row no-br">
@@ -90,7 +70,11 @@
                         <div class="col-md-2 br text-center booked">
                             <br>
                             <ul class="list-group col-md-12 options">
-                                <li class="list-group-item">{{ $stand->reservation->name }}</li>
+                                <li class="list-group-item"><img src="{{ asset('/uploads/logos/'. $stand->reservation->logo) }}"></li>
+                                <li class="list-group-item">
+                                    {{ $stand->reservation->name }} - {{ $stand->reservation->email }}
+                                    - {{ $stand->reservation->address }}
+                                </li>
                                 <li class="list-group-item">
                                     <a href="{{ asset('/uploads/documents/'. $stand->reservation->documents) }}" type="button" class="btn btn-success" style="font-size:11px">Get documents</a>
                                 </li>
