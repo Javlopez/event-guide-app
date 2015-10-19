@@ -33,6 +33,6 @@ class EventEloquent extends AbstractRepository implements EventInterface
      */
     public function getEventById($id)
     {
-        return $this->getModel()->with('stands','stands.reservation')->find($id);
+        return $this->getModel()->with('stands', 'stands.reservation')->find($id);
     }
 }

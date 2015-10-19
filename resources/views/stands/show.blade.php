@@ -12,7 +12,7 @@
             <strong>Price:</strong> $ {{ number_format($stand->price,2) }} USD
         </li>
         <li class="list-group-item">
-            <a href="{{ route('stands.reservation',['id' => $stand->id ]) }}" class="btn btn-info">Book this stand</a>
+            <a href="{{ route('reservation',['id' => $stand->id ]) }}" class="btn btn-info">Book this stand</a>
         </li>
     </ul>
 </div>

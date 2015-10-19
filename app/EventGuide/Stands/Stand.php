@@ -17,4 +17,12 @@ class Stand extends Model
     {
         return $this->hasOne('EventGuide\Reservations\Reservation');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function event()
+    {
+        return $this->belongsTo('EventGuide\Events\Event');
+    }
 }

@@ -148,6 +148,7 @@ return [
         'EventGuide\Places\PlaceServiceProvider',
         'EventGuide\Events\EventServiceProvider',
         'EventGuide\Stands\StandServiceProvider',
+        'EventGuide\Reservations\ReservationServiceProvider',
 
     ],
 

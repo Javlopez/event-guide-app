@@ -18,6 +18,7 @@ class PlaceEloquent extends AbstractRepository implements PlaceInterface
     {
         parent::__construct($model);
     }
+
     /**
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */

@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
  * Class PlaceServiceProvider
  * @package EventGuide\Places
  */
-class PlaceServiceProvider extends  ServiceProvider
+class PlaceServiceProvider extends ServiceProvider
 {
     public function register()
     {

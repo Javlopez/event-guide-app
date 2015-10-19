@@ -45,14 +45,12 @@
             .br-t{border-top:1px solid #ccc;}
             .br-b{border-bottom:1px solid #ccc;}
             .showroom > div,.showroom > div > div { height:130px;}
-            .showroom > div.col-md-2:hover, .showroom > div > div.col-md-2:hover { background:#eee;}
+            div.available:hover { background:#eee;}
             .no-br { border:none !important;}
             .btn{  font-size: 12px;}
-            .booked {
-                /* background: url("http://localhost:8000/img/header.jpg") 1px 2px no-repeat; */
+            .booked, .booked:hover {
+                background:#fff url('/img/sold-ribbon.png') no-repeat 130px -10px !important;
             }
-            .booked:hover { background:#fff !important; }
-            *{font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;}
             address.information {
                 font-size: 12px;
                 font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
@@ -92,14 +90,14 @@
                         <div class="col-md-2 br text-center booked">
                             <br>
                             <ul class="list-group col-md-12 options">
-                                <li class="list-group-item">Twitter .Inc</li>
+                                <li class="list-group-item">{{ $stand->reservation->name }}</li>
                                 <li class="list-group-item">
-                                    <button type="button" class="btn btn-success" style="font-size:11px">documents</button>
+                                    <a href="{{ asset('/uploads/documents/'. $stand->reservation->documents) }}" type="button" class="btn btn-success" style="font-size:11px">Get documents</a>
                                 </li>
                             </ul>
                         </div>
                     @else
-                        <div class="col-md-2 br text-center">
+                        <div class="col-md-2 br text-center available">
                             <br>
                             <ul class="list-group col-md-12 options">
                                 <li class="list-group-item"> Stand {{$stand->id}}: available</li>

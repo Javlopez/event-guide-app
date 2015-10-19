@@ -17,4 +17,17 @@ class ReservationEloquent extends AbstractRepository implements ReservationInter
     {
         parent::__construct($model);
     }
+
+    /**
+     * @param array $request
+     * @return Reservation
+     */
+    public function createReservation(array $request)
+    {
+        $reservation = $this->model->newInstance();
+        $reservation->name = $request['name'];
+        $reservation->email = $request['email'];
+        $reservation->address = $request['address'];
+        return $reservation;
+    }
 }

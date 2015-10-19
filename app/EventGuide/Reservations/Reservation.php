@@ -9,5 +9,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Reservation extends Model
 {
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function stand()
+    {
+        return $this->belongsTo('EventGuide\Stands\Stand');
+    }
 }

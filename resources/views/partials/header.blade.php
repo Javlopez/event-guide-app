@@ -22,5 +22,8 @@
     <![endif]-->
     <script src="{{ asset('/js/vendor.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <style> #map {  width: 700px;  height: 500px; }</style>
+    <style>
+        #map {  width: 700px;  height: 500px; }
+        *{font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;}
+    </style>
 </head>

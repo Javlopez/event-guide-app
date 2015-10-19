@@ -34,10 +34,4 @@ class EventsController extends Controller
         return view('events.show',compact('event'));
     }
 
-
-    public function create($id)
-    {
-        return "new Event stand $id";
-    }
-
 }

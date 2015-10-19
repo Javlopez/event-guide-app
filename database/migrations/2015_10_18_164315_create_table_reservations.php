@@ -19,7 +19,7 @@ class CreateTableReservations extends Migration
             $table->string('email');
             $table->string('address');
             $table->string('documents');
-            $table->string('header_image');
+            $table->string('logo');
             $table->timestamps();
 
             $table
