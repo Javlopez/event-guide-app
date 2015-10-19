@@ -98,7 +98,7 @@ class ReservationsController extends Controller
         $document = $request->file('documents');
 
         $this->uploadImage($image, $imageName);
-        $this->uploadDocument($document, $imageName);
+        $this->uploadDocument($document, $documentName);
 
 
         $reservation = $this->reservation->createReservation($request->all());
