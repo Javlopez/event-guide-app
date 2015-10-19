@@ -99,7 +99,7 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('documents', 'Documents (only zip are allowed)',['class' => 'col-sm-3 control-label' ]) !!}
+                        {!! Form::label('documents', 'Documents (zip,pdf)',['class' => 'col-sm-3 control-label' ]) !!}
                         <div class="col-sm-9">
                             {!! Form::file('documents', null, [ 'class'=> 'form-control']) !!}
                         </div>
