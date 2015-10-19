@@ -27,7 +27,7 @@ class ReservationsController extends Controller
 
     const UPLOAD_LOGOS = "/../public/uploads/logos/";
 
-    const UPLOAD_DOCUMENTS = "/../public/uploads/document/";
+    const UPLOAD_DOCUMENTS = "/../public/uploads/documents/";
 
     /**
      * @var
